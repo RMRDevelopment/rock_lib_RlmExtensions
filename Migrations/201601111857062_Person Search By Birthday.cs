@@ -1,11 +1,9 @@
 namespace com.reallifeministries.RockExtensions
 {
-    using Rock.Data;
-    using Rock.Model;
-    using System;
-    using System.Data.Entity.Migrations;
+    using Rock.Plugin;
 
-    public partial class PersonSearchByBirthday : Rock.Migrations.RockMigration
+    [MigrationNumber(1, "1.1.0")]
+    public partial class PersonSearchByBirthday : Migration
     {
         public override void Up()
         {
@@ -17,7 +15,6 @@ namespace com.reallifeministries.RockExtensions
             RockMigrationHelper.AddBlockTypeAttribute("61043136-18A6-4663-9379-3CAACE48607D", "BD53F9C9-EBA9-4D3F-82EA-DE5DD34A8108", "Person Detail Page", "PersonDetailPage", "", "", 0, @"", "19AE5328-CF97-4191-AD15-DF8B0A9D67E2");
             RockMigrationHelper.AddBlockAttributeValue("3C08F81B-5FAF-43B7-A13B-6B8873A3B304", "509F5E9B-B4DE-4AC3-A9C5-2B527093A198", @"True"); // Show Performance
             RockMigrationHelper.AddBlockAttributeValue("3C08F81B-5FAF-43B7-A13B-6B8873A3B304", "19AE5328-CF97-4191-AD15-DF8B0A9D67E2", @"08dbd8a5-2c35-4146-b4a8-0f7652348b25"); // Person Detail Page
-
         }
         public override void Down()
         {
