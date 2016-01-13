@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.reallifeministries.RockExtensions.Workflow.Migrations
+namespace com.reallifeministries.RockExtensions.Migrations
 {
     using Rock.Plugin;
 
