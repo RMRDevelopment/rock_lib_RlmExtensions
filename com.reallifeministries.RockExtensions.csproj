@@ -37,6 +37,10 @@
     <Reference Include="EntityFramework">
       <HintPath>..\Rock\bin\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RockWeb\Bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Rock">
       <HintPath>..\Rock\bin\Rock.dll</HintPath>
     </Reference>
@@ -52,7 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\001_AddBirthdaySearchPageAndData .cs" />
+    <Compile Include="Migrations\002_AddBirthdaySearchRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\Person\BirthDate.cs" />
     <Compile Include="Workflow\Action\ActivateWorkflow.cs" />
     <Compile Include="Workflow\Action\AddPersonToGroup.cs" />
     <Compile Include="Workflow\Action\AppendPrependToAttribute.cs" />
