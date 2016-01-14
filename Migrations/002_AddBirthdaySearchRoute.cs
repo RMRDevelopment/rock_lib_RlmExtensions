@@ -18,7 +18,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
         public override void Up()
         {
             // Page: Birthday Search            
-            RockMigrationHelper.AddPageRoute("B759404A-7903-427F-921B-953A7E07A517", "Person/Search/Birthday");
+            RockMigrationHelper.AddPageRoute("B759404A-7903-427F-921B-953A7E07A517", "Person/Search/Birthday/{SearchTerm}");
         }
     }
 }
