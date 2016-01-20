@@ -60,6 +60,9 @@
     <Compile Include="Migrations\002_AddBirthdaySearchRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\Person\BirthDate.cs" />
+    <Compile Include="Workflow\Action\AttendenceCode.cs" />
+    <Compile Include="Workflow\Action\GenerateAttendenceCode.cs" />
+    <Compile Include="Workflow\Action\ValidateAttendenceCode.cs" />
     <Compile Include="Workflow\Action\ActivateWorkflow.cs" />
     <Compile Include="Workflow\Action\AddPersonToGroup.cs" />
     <Compile Include="Workflow\Action\AppendPrependToAttribute.cs" />
