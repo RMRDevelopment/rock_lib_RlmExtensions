@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Workflow.Action
 {
-    enum AttendenceCode
+    enum AttendanceCode
     {
         PF,
         CDA,

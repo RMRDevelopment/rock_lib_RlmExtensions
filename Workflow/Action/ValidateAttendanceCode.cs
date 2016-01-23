@@ -15,12 +15,12 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     /// <summary>
     /// Activates a new activity for a given activity type
     /// </summary>
-    [Description( "Validates attendence code to determine if it matches the system generated one" )]
+    [Description( "Validates attendance code to determine if it matches the system generated one" )]
     [Export( typeof( ActionComponent ) )]
-    [ExportMetadata( "ComponentName", "Validate Attendence Code" )]
+    [ExportMetadata( "ComponentName", "Validate attendance Code" )]
         
     [TextField("UserInputCode", "The code submitted by the user", true)]
-    public class ValidateAttendenceCode : ActionComponent
+    public class ValidateAttendanceCode : ActionComponent
     {
         /// <summary>
         /// Executes the specified workflow.
@@ -34,11 +34,11 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
         {
             errorMessages = new List<string>();
             var globalAttributes = Rock.Web.Cache.GlobalAttributesCache.Read();            
-            var attendenceCodes = new Dictionary<AttendenceCode, String>();
-            attendenceCodes.Add(AttendenceCode.PF, globalAttributes.GetValue("PFAttendenceCode"));
-            attendenceCodes.Add(AttendenceCode.CDA, globalAttributes.GetValue("CDAAttendenceCode"));
-            attendenceCodes.Add(AttendenceCode.THIRST, globalAttributes.GetValue("THIRSTAttendenceCode"));
-            attendenceCodes.Add(AttendenceCode.RECOVERY, globalAttributes.GetValue("RECOVERYAttendenceCode"));
+            var AttendanceCodes = new Dictionary<AttendanceCode, String>();
+            AttendanceCodes.Add(AttendanceCode.PF, globalAttributes.GetValue("PFAttendanceCode"));
+            AttendanceCodes.Add(AttendanceCode.CDA, globalAttributes.GetValue("CDAAttendanceCode"));
+            AttendanceCodes.Add(AttendanceCode.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
+            AttendanceCodes.Add(AttendanceCode.RECOVERY, globalAttributes.GetValue("RECOVERYAttendanceCode"));
 
             var userInputtedCode = GetAttributeValue(action, "UserInputCode").ResolveMergeFields(GetMergeFields(action));
             // parse the userInputtedCode
@@ -46,16 +46,18 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             parsedInput = parsedInput.ToLower();
             // check to see if the generatedcode matches
             if (!String.IsNullOrEmpty(parsedInput)) {
-                var match = attendenceCodes.Where(v => v.Value == parsedInput).FirstOrDefault();
+                var match = AttendanceCodes.Where(v => v.Value == parsedInput).FirstOrDefault();
                 if (match.Value != null)
-                {
-                    var currentActivity = action.Activity;
-                    currentActivity.SetAttributeValue("AttendenceKey", match.Key.ToString());
-                    currentActivity.SaveAttributeValues();
-                    return true;
+                {                    
+                    action.Activity.Workflow.SetAttributeValue("AttendanceKey", match.Key.ToString());
+                    action.Activity.Workflow.SetAttributeValue("AttendanceCode", match.Value.ToString());                    
                 }
             }
-
+            else
+            {
+                action.Activity.Workflow.SetAttributeValue("AttendanceKey", String.Empty);
+                action.Activity.Workflow.SetAttributeValue("AttendanceCode", String.Empty);
+            }
             return true;            
         }
         public string RemoveWhitespace(string input)

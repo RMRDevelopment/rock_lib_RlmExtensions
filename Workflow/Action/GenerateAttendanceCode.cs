@@ -16,15 +16,15 @@ using Rock.Workflow;
 namespace com.reallifeministries.RockExtensions.Workflow.Action
 {
     /// <summary>
-    /// Generates a new attendence code for a given type
+    /// Generates a new attendance code for a given type
     /// </summary>
-    [Description( "Generates a new attendence code for a given type" )]
+    [Description( "Generates a new attendance code for a given type" )]
     [Export( typeof( ActionComponent ) )]
     [ExportMetadata( "ComponentName", "Activate Workflow" )]
         
     [TextField("ServiceName", "Service to generate the code for",true)]
     [TextField("GeneratedCode", "Code that is generated from this action", true)]
-    public class GenerateAttendenceCode : ActionComponent
+    public class GenerateAttendanceCode : ActionComponent
     {
         /// <summary>
         /// Executes the specified workflow.
@@ -46,43 +46,44 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 action.AddLogEntry("Invalid ServiceName Property", true);
                 return false;
             }
-            AttendenceCode attendenceCode;
-            if (Enum.TryParse<AttendenceCode>(serviceName.ToUpper(), out attendenceCode))
+            AttendanceCode attendanceCode;
+            if (Enum.TryParse<AttendanceCode>(serviceName.ToUpper(), out attendanceCode))
             {
-                var generatedCode = GenerateCode(attendenceCode);
+                var generatedCode = GenerateCode(attendanceCode);
                 if (generatedCode == null)
                 {
-                    action.AddLogEntry("GenerateCode return null, please check your serviceName", true);
+                    action.AddLogEntry(String.Format("GenerateCode returned null, please check your serviceName is one of the following: {0}",String.Join(",", Enum.GetValues(typeof(AttendanceCode)))), true);
                     return false;
                 }
-                globalAttributes.SetValue(String.Format("{0}AttendenceCode", serviceName.ToUpper()), generatedCode, true);
+                globalAttributes.SetValue(String.Format("{0}AttendanceCode", serviceName.ToUpper()), generatedCode, true);
+                action.Activity.Workflow.SetAttributeValue("GeneratedCode", generatedCode);
             }
             else
             {
-                action.AddLogEntry("Attendence Code invalid, please check your serviceName", true);
+                action.AddLogEntry("attendance Code invalid, please check your serviceName", true);
                 return false;
             }            
             return true;
         }
 
-        private string GenerateCode(AttendenceCode attendenceCode)
+        private string GenerateCode(AttendanceCode attendanceCode)
         {
             // validate this service matches
             var prefix = "";
-            switch (attendenceCode)
+            switch (attendanceCode)
             {
-                case AttendenceCode.PF :
-                case AttendenceCode.CDA:
+                case AttendanceCode.PF :
+                case AttendanceCode.CDA:
                     {
                         prefix = "lifer";
                     }
                     break;
-                case AttendenceCode.THIRST:
+                case AttendanceCode.THIRST:
                     {
                         prefix = "thirst";
                     }
                     break;
-                case AttendenceCode.RECOVERY:
+                case AttendanceCode.RECOVERY:
                     {
                         prefix = "recovery";
 
