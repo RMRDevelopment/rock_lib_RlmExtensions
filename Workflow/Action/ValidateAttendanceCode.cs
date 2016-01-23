@@ -34,11 +34,11 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
         {
             errorMessages = new List<string>();
             var globalAttributes = Rock.Web.Cache.GlobalAttributesCache.Read();            
-            var AttendanceCodes = new Dictionary<AttendanceCode, String>();
-            AttendanceCodes.Add(AttendanceCode.PF, globalAttributes.GetValue("PFAttendanceCode"));
-            AttendanceCodes.Add(AttendanceCode.CDA, globalAttributes.GetValue("CDAAttendanceCode"));
-            AttendanceCodes.Add(AttendanceCode.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
-            AttendanceCodes.Add(AttendanceCode.RECOVERY, globalAttributes.GetValue("RECOVERYAttendanceCode"));
+            var AttendanceCodes = new Dictionary<RLMServiceTypes, String>();
+            AttendanceCodes.Add(RLMServiceTypes.PF, globalAttributes.GetValue("PFAttendanceCode"));
+            AttendanceCodes.Add(RLMServiceTypes.CDA, globalAttributes.GetValue("CDAAttendanceCode"));
+            AttendanceCodes.Add(RLMServiceTypes.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
+            AttendanceCodes.Add(RLMServiceTypes.RECOVERY, globalAttributes.GetValue("RECOVERYAttendanceCode"));
 
             var userInputtedCode = GetAttributeValue(action, "UserInputCode").ResolveMergeFields(GetMergeFields(action));
             // parse the userInputtedCode

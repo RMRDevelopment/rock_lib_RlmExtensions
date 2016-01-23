@@ -46,13 +46,13 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 action.AddLogEntry("Invalid ServiceName Property", true);
                 return false;
             }
-            AttendanceCode attendanceCode;
-            if (Enum.TryParse<AttendanceCode>(serviceName.ToUpper(), out attendanceCode))
+            RLMServiceTypes attendanceCode;
+            if (Enum.TryParse<RLMServiceTypes>(serviceName.ToUpper(), out attendanceCode))
             {
                 var generatedCode = GenerateCode(attendanceCode);
                 if (generatedCode == null)
                 {
-                    action.AddLogEntry(String.Format("GenerateCode returned null, please check your serviceName is one of the following: {0}",String.Join(",", Enum.GetValues(typeof(AttendanceCode)))), true);
+                    action.AddLogEntry(String.Format("GenerateCode returned null, please check your serviceName is one of the following: {0}",String.Join(",", Enum.GetValues(typeof(RLMServiceTypes)))), true);
                     return false;
                 }
                 globalAttributes.SetValue(String.Format("{0}AttendanceCode", serviceName.ToUpper()), generatedCode, true);
@@ -66,24 +66,24 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             return true;
         }
 
-        private string GenerateCode(AttendanceCode attendanceCode)
+        private string GenerateCode(RLMServiceTypes attendanceCode)
         {
             // validate this service matches
             var prefix = "";
             switch (attendanceCode)
             {
-                case AttendanceCode.PF :
-                case AttendanceCode.CDA:
+                case RLMServiceTypes.PF :
+                case RLMServiceTypes.CDA:
                     {
                         prefix = "lifer";
                     }
                     break;
-                case AttendanceCode.THIRST:
+                case RLMServiceTypes.THIRST:
                     {
                         prefix = "thirst";
                     }
                     break;
-                case AttendanceCode.RECOVERY:
+                case RLMServiceTypes.RECOVERY:
                     {
                         prefix = "recovery";
 
