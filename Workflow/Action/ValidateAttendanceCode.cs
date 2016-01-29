@@ -35,6 +35,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             errorMessages = new List<string>();
             var globalAttributes = Rock.Web.Cache.GlobalAttributesCache.Read();            
             var AttendanceCodes = new Dictionary<RLMServiceTypes, String>();
+            
             AttendanceCodes.Add(RLMServiceTypes.PF, globalAttributes.GetValue("PFAttendanceCode"));
             AttendanceCodes.Add(RLMServiceTypes.CDA, globalAttributes.GetValue("CDAAttendanceCode"));
             AttendanceCodes.Add(RLMServiceTypes.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
@@ -50,13 +51,14 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 if (match.Value != null)
                 {                    
                     action.Activity.Workflow.SetAttributeValue("AttendanceKey", match.Key.ToString());
-                    action.Activity.Workflow.SetAttributeValue("AttendanceCode", match.Value.ToString());                    
+                    action.Activity.Workflow.SetAttributeValue("AttendanceCode", match.Value);                    
                 }
             }
             else
             {
                 action.Activity.Workflow.SetAttributeValue("AttendanceKey", String.Empty);
                 action.Activity.Workflow.SetAttributeValue("AttendanceCode", String.Empty);
+                action.Activity.Workflow.SetAttributeValue("Campus", String.Empty);
             }
             return true;            
         }
