@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
-    class _002_AddWorkflowsForTextAttendance : Migration
+    class _002_FamilyCheckinWorkflowsForTextAttendance : Migration
     {
         public override void Down()
         {
@@ -52,12 +52,13 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "9C204CD0-1233-41C5-818A-C5DA439445AA", "FamilyNames", "FamilyNames", "", 3, @"", "73CF0E8E-4A33-47D3-8088-724376ECF17D"); // Text Attendance Household:FamilyNames
             RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "9C204CD0-1233-41C5-818A-C5DA439445AA", "AttendanceKey", "AttendanceKey", "", 4, @"", "961E2048-0F51-4851-9415-F643C4A7F0C7"); // Text Attendance Household:AttendanceKey
             RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "9C204CD0-1233-41C5-818A-C5DA439445AA", "AttendanceCode", "AttendanceCode", "", 5, @"", "00952282-96BD-457A-B091-CBC07C9F07EC"); // Text Attendance Household:AttendanceCode
-            RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "F4399CEF-827B-48B2-A735-F7806FCFE8E8", "Group Attendance", "GroupAttendance", "", 6, @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e", "2FD0D6BE-0EFD-49F2-A597-1159596B4CCD"); // Text Attendance Household:Group Attendance
-            RockMigrationHelper.AddAttributeQualifier("9ACEB2C7-90EC-4E5C-982D-71144B805D80", "ispassword", @"False", "2F5F24A6-FAC1-4D4D-9CC3-526308A100B9"); // Text Attendance Household:FromPersonAttendanceCode:ispassword
-            RockMigrationHelper.AddAttributeQualifier("D6E62EEC-754A-47DA-B2D8-520B6891D935", "ispassword", @"False", "B4839A1F-2B9F-4B4C-B518-AA5C5B4E37AF"); // Text Attendance Household:FromPhone:ispassword
-            RockMigrationHelper.AddAttributeQualifier("73CF0E8E-4A33-47D3-8088-724376ECF17D", "ispassword", @"False", "09C39D6C-BBDB-4256-BBB2-DC9FC389103D"); // Text Attendance Household:FamilyNames:ispassword
-            RockMigrationHelper.AddAttributeQualifier("961E2048-0F51-4851-9415-F643C4A7F0C7", "ispassword", @"False", "35923EB9-4964-4618-9D95-091ED15C71A9"); // Text Attendance Household:AttendanceKey:ispassword
-            RockMigrationHelper.AddAttributeQualifier("00952282-96BD-457A-B091-CBC07C9F07EC", "ispassword", @"False", "B06CC944-0B02-4206-9063-24EDE21406BE"); // Text Attendance Household:AttendanceCode:ispassword
+            RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "F4399CEF-827B-48B2-A735-F7806FCFE8E8", "AttendanceGroup", "AttendanceGroup", "", 6, @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e", "2FD0D6BE-0EFD-49F2-A597-1159596B4CCD"); // Text Attendance Household:AttendanceGroup
+            RockMigrationHelper.UpdateWorkflowTypeAttribute("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", "1B71FEF4-201F-4D53-8C60-2DF21F1985ED", "Campus", "Campus", "", 7, @"", "0C46A949-4103-47E7-BB92-C70E74E51C13"); // Text Attendance Household:Campus
+            RockMigrationHelper.AddAttributeQualifier("9ACEB2C7-90EC-4E5C-982D-71144B805D80", "ispassword", @"False", "D0E51E38-884B-44B1-8D29-973E70C50959"); // Text Attendance Household:FromPersonAttendanceCode:ispassword
+            RockMigrationHelper.AddAttributeQualifier("D6E62EEC-754A-47DA-B2D8-520B6891D935", "ispassword", @"False", "EA027270-4B87-4F39-9384-3BD08F9C9F55"); // Text Attendance Household:FromPhone:ispassword
+            RockMigrationHelper.AddAttributeQualifier("73CF0E8E-4A33-47D3-8088-724376ECF17D", "ispassword", @"False", "18EC7EFB-7A61-4283-96A9-152993004C42"); // Text Attendance Household:FamilyNames:ispassword
+            RockMigrationHelper.AddAttributeQualifier("961E2048-0F51-4851-9415-F643C4A7F0C7", "ispassword", @"False", "9F35636F-10D5-4DC4-BA9C-BB03368B8639"); // Text Attendance Household:AttendanceKey:ispassword
+            RockMigrationHelper.AddAttributeQualifier("00952282-96BD-457A-B091-CBC07C9F07EC", "ispassword", @"False", "791925CD-5EAD-4E5D-AE03-A59C078AE81E"); // Text Attendance Household:AttendanceCode:ispassword
             RockMigrationHelper.UpdateWorkflowActivityType("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", true, "Validate Attendance Code", "validates a correct attendance code", true, 0, "0AC62C9B-4306-4580-98A9-6748DF94F0BB"); // Text Attendance Household:Validate Attendance Code
             RockMigrationHelper.UpdateWorkflowActivityType("C5FE671A-C3CA-4785-95DD-3CB10F4308B0", true, "Check In Family", "Check in Family and Send Message if they were all checked in.", false, 1, "69A83BE1-305C-459A-87C8-2E91EF4C7A53"); // Text Attendance Household:Check In Family
             RockMigrationHelper.UpdateWorkflowActionType("0AC62C9B-4306-4580-98A9-6748DF94F0BB", "Activate Check in", 2, "38907A90-1634-4A93-8017-619326A4A582", true, false, "", "00952282-96BD-457A-B091-CBC07C9F07EC", 64, "", "80FB3FE0-0FEC-4F41-B0E7-43389852B41E"); // Text Attendance Household:Validate Attendance Code:Activate Check in

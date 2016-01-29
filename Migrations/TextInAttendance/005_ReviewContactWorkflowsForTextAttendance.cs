@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
-    class _005_AddWorkflowsForTextAttendance : Migration
+    class _005_ReviewContactWorkflowsForTextAttendance : Migration
     {
         public override void Down()
         {
