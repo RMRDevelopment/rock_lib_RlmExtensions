@@ -16,19 +16,41 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     /// <summary>
     /// Activates a new activity for a given activity type
     /// </summary>
-    [Description("Get's a list of family members as a string for a given person object")]
+    [Description("Get's a list of family members and optionally checks them into an AttendanceService as a string for a given person object")]
     [Export(typeof(ActionComponent))]
     [ExportMetadata("ComponentName", "Get Family From Person")]
 
     [WorkflowAttribute("PersonAttribute", "The workflow attribute containing the person.", true, "", "", 0, null,
         new string[] { "Rock.Field.Types.PersonFieldType" })]
+    [WorkflowAttribute("Group", "The Group to Check each family member into", false, "", "", 0, null,
+        new string[] { "Rock.Field.Types.GroupFieldType" })]
     public class GetFamilyFromPerson : ActionComponent
     {
+
         public override bool Execute(RockContext rockContext, WorkflowAction action, object entity, out List<string> errorMessages)
         {
-            errorMessages = new List<string>();            
+            Guid? groupGuid = null;
+            Group group = null;
+            errorMessages = new List<string>();
             var personAttribute = GetAttributeValue(action, "PersonAttribute");
             Guid personAttrGuid = personAttribute.AsGuid();
+            // get the group attribute
+            Guid groupAttributeGuid = GetAttributeValue(action, "Group").AsGuid();
+            if (!groupAttributeGuid.IsEmpty())
+            {
+                groupGuid = action.GetWorklowAttributeValue(groupAttributeGuid).AsGuidOrNull();
+
+                if (!groupGuid.HasValue)
+                {
+                    action.AddLogEntry("The group could not be found!");
+                }
+                else
+                {
+                    group = new GroupService(rockContext).Queryable("GroupType.DefaultGroupRole")
+                                        .Where(g => g.Guid == groupGuid)
+                                        .FirstOrDefault();
+                }
+            }
 
             if (!personAttrGuid.IsEmpty())
             {
@@ -43,8 +65,13 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                         var personAlias = (new PersonAliasService(rockContext)).Get(personAliasGuid);
                         if (personAlias != null)
                         {
-                            var familyNames = personAlias.Person.GetFamilyMembers().Select(f => f.Person.FirstName);
+                            var familyMembers = personAlias.Person.GetFamilyMembers();
+                            var familyNames = familyMembers.Select(f => f.Person.FirstName);
                             action.Activity.Workflow.SetAttributeValue("FamilyNames", String.Join(", ", familyNames));
+                            if (group != null)
+                            {
+                                checkInFamily(familyMembers, group, rockContext);
+                            }
                         }
                         else
                         {
@@ -64,6 +91,21 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             }
 
             return true;
+        }
+        private void checkInFamily(IQueryable<GroupMember> family, Group attendanceGroup, RockContext rockContext)
+        {
+            AttendanceService attendanceService = new AttendanceService(rockContext);
+            foreach (var member in family)
+            {
+                Attendance attendance = new Attendance();
+                attendance.GroupId = attendanceGroup.Id;
+                attendance.PersonAliasId = member.Person.PrimaryAliasId;
+                attendance.StartDateTime = RockDateTime.Now;
+                attendance.DidAttend = true;
+
+                attendanceService.Add(attendance);
+            }
+            rockContext.SaveChanges();
         }
     }
 }
