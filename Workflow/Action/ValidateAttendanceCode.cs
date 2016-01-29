@@ -58,7 +58,6 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             {
                 action.Activity.Workflow.SetAttributeValue("AttendanceKey", String.Empty);
                 action.Activity.Workflow.SetAttributeValue("AttendanceCode", String.Empty);
-                action.Activity.Workflow.SetAttributeValue("Campus", String.Empty);
             }
             return true;            
         }
