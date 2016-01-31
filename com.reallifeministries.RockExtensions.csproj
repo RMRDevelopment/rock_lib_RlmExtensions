@@ -59,6 +59,11 @@
     <Compile Include="Migrations\001_AddBirthdaySearchPageAndData .cs" />
     <Compile Include="Migrations\TextInAttendance\002_FamilyCheckinWorkflowsForTextAttendance.cs" />
     <Compile Include="Migrations\TextInAttendance\006_RemoveAttendanceWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\011_GenerateRECOVERYCodeWorkflow.cs" />
+    <Compile Include="Migrations\TextInAttendance\010_GenerateTHIRSTCodeWorkflow.cs" />
+    <Compile Include="Migrations\TextInAttendance\009_GenerateCDACodeWorkflow.cs" />
+    <Compile Include="Migrations\TextInAttendance\008_GeneratePFCodeWorkflow.cs" />
+    <Compile Include="Migrations\TextInAttendance\007_DefinedTypesForTextAttendance.cs" />
     <Compile Include="Migrations\TextInAttendance\005_ReviewContactWorkflowsForTextAttendance.cs" />
     <Compile Include="Migrations\TextInAttendance\004_HomegroupConnectionAddWorkflowsForTextAttendance.cs" />
     <Compile Include="Migrations\TextInAttendance\003_PrayerRequestWorkflowsForTextAttendance.cs" />
