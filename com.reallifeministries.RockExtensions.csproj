@@ -57,9 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\001_AddBirthdaySearchPageAndData .cs" />
+    <Compile Include="Migrations\TextInAttendance\002_FamilyCheckinWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\006_RemoveAttendanceWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\005_ReviewContactWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\004_HomegroupConnectionAddWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\003_PrayerRequestWorkflowsForTextAttendance.cs" />
+    <Compile Include="Migrations\TextInAttendance\001_StartWorkflowsForTextAttendance.cs" />
     <Compile Include="Migrations\002_AddBirthdaySearchRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\Person\BirthDate.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\PostAttendanceToGroup.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\RemoveLastAttendanceFromPerson.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\AddPrayerRequestToPerson.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\GetFamilyMembersFromPerson.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\RLMServiceTypes.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\GenerateAttendanceCode.cs" />
+    <Compile Include="Workflow\Action\TextInAttendance\ValidateAttendanceCode.cs" />
     <Compile Include="Workflow\Action\ActivateWorkflow.cs" />
     <Compile Include="Workflow\Action\AddPersonToGroup.cs" />
     <Compile Include="Workflow\Action\AppendPrependToAttribute.cs" />
