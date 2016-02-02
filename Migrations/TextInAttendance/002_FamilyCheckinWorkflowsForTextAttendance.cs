@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(4, "1.2.0")]
     class _002_FamilyCheckinWorkflowsForTextAttendance : Migration
     {
         public override void Down()

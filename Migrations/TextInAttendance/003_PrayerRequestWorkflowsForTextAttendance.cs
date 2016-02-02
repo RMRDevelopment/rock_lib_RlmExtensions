@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(5, "1.2.0")]
     class _003_PrayerRequestWorkflowsForTextAttendance : Migration
     {
         public override void Down()

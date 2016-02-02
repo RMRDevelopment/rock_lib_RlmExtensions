@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(11, "1.2.0")]
     class _009_GenerateCDACodeWorkflow : Migration
     {
         public override void Down()

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(9, "1.2.0")]
     class _007_DefinedTypesForTextAttendance : Migration
     {
         public override void Down()
