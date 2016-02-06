@@ -9,6 +9,7 @@ using Rock.Attribute;
 using Rock.Data;
 using Rock.Model;
 using Rock.Workflow;
+using System.Globalization;
 
 namespace com.reallifeministries.RockExtensions.Workflow.Action
 {
@@ -41,13 +42,40 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             AttendanceCodes.Add(RLMServiceTypes.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
             AttendanceCodes.Add(RLMServiceTypes.RECOVERY, globalAttributes.GetValue("RECOVERYAttendanceCode"));
 
-            var userInputtedCode = GetAttributeValue(action, "UserInputCode").ResolveMergeFields(GetMergeFields(action));
-            // parse the userInputtedCode
-            var parsedInput = RemoveWhitespace(userInputtedCode);
-            parsedInput = parsedInput.ToLower();
+            var userInputtedCode = GetAttributeValue(action, "UserInputCode").ResolveMergeFields(GetMergeFields(action));            
+            var parsedSplit = userInputtedCode.Split('|');
+            string attendanceDateString = null;
+            string attendancecode = null;
+            DateTime attendanceDate = new DateTime();
+            bool dateValidated = false;
+            if (parsedSplit.Length > 1)
+            {
+                attendancecode = parsedSplit[0];
+                attendanceDateString = parsedSplit[1];    
+                // check to see if the date is within 4 hours of right now
+                if (!String.IsNullOrEmpty(attendanceDateString))
+                {
+                    if (DateTime.TryParse(attendanceDateString,  out attendanceDate))
+                    {
+                        if (RockDateTime.Now <= attendanceDate.AddHours(4))
+                        {
+                            dateValidated = true;
+                        }
+                        else
+                        {
+                            errorMessages.Add(string.Format("Attendance Code has expired, please enter the attendance code again"));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                attendancecode = parsedSplit[0];
+            }
+            attendancecode = RemoveWhitespace(attendancecode.ToLower());
             // check to see if the generatedcode matches
-            if (!String.IsNullOrEmpty(parsedInput)) {
-                var match = AttendanceCodes.Where(v => v.Value == parsedInput).FirstOrDefault();
+            if (!string.IsNullOrEmpty(attendancecode) || (attendanceDateString != null && !dateValidated)) {
+                var match = AttendanceCodes.Where(v => v.Value == attendancecode).FirstOrDefault();
                 if (match.Value != null)
                 {                    
                     action.Activity.Workflow.SetAttributeValue("AttendanceKey", match.Key.ToString());
