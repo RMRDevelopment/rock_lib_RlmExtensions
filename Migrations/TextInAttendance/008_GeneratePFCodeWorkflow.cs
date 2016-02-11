@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(10, "1.2.0")]
     class _008_GeneratePFCodeWorkflow : Migration
     {
         public override void Down()

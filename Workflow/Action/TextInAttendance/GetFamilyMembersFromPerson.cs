@@ -25,7 +25,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     [WorkflowAttribute("Group", "The Group to Check each family member into", false, "", "", 0, null,
         new string[] { "Rock.Field.Types.GroupFieldType" })]
     [WorkflowAttribute("Campus", "The Campus location to Check each family member into", false, "", "", 0, null,
-        new string[] { "Rock.Field.Types.GroupFieldType" })]
+        new string[] { "Rock.Field.Types.CampusFieldType" })]
     public class GetFamilyFromPerson : ActionComponent
     {
 
@@ -67,7 +67,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 else
                 {
                     campus = new CampusService(rockContext).Queryable()
-                                        .Where(g => g.Guid == groupGuid)
+                                        .Where(g => g.Guid == campusGuid)
                                         .FirstOrDefault();
                 }
             }
