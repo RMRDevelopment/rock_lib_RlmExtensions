@@ -12,17 +12,17 @@ namespace com.reallifeministries.RockExtensions.Migrations
     {
         public override void Down()
         {
+            RockMigrationHelper.DeleteAttribute("0097D00F-1F29-4217-8E67-D37A619A6FA3"); // WorkflowType
             RockMigrationHelper.DeleteAttribute("17B0E99E-2D10-442A-9342-1F9F07996C2B"); // AttendanceGroup
             RockMigrationHelper.DeleteAttribute("3A526D6C-06FC-46CD-A447-9A6D9A74BB4F"); // KeywordExpression
             RockMigrationHelper.DeleteAttribute("67E09C64-3558-48B7-9A27-A9499D0826E8"); // WorkflowNameTemplate
             RockMigrationHelper.DeleteAttribute("79E3B97B-A717-45AB-A279-335FCDEA141A"); // Campus
-            RockMigrationHelper.DeleteAttribute("0097D00F-1F29-4217-8E67-D37A619A6FA3"); // WorkflowType
             RockMigrationHelper.DeleteAttribute("836CFC0B-6750-4A93-8309-EAB868B845AF"); // WorkflowAttributes
-
             RockMigrationHelper.DeleteDefinedValue("2294DC3F-8539-4442-B30E-36D647C70261"); // +12082976885
+            RockMigrationHelper.DeleteDefinedValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5"); // +12082976885
+            RockMigrationHelper.DeleteDefinedValue("63BE76F0-73E8-4709-8606-D26A5C060DCF"); // +12082976885
             RockMigrationHelper.DeleteDefinedValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74"); // +12082976885
             RockMigrationHelper.DeleteDefinedValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B"); // +12082976885
-            RockMigrationHelper.DeleteDefinedValue("C9C34BD5-D286-4002-AC28-474C2D6DFAED"); // +12082976885
             RockMigrationHelper.DeleteDefinedValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624"); // +12082976885
             RockMigrationHelper.DeleteDefinedValue("FE137A19-ECCE-44B5-9643-00C056CF2A72"); // +12082976885
             RockMigrationHelper.DeleteDefinedType("2CACB86F-D811-4483-98E1-272F1FF8FF5D"); // Text To Workflow
@@ -227,39 +227,54 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddDefinedTypeAttribute("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "9C204CD0-1233-41C5-818A-C5DA439445AA", "Workflow Name Template", "WorkflowNameTemplate", "The lava template to use for setting the workflow name. See the defined type's help text for a listing of merge fields. <span class='tip tip-lava'></span>", 4, "", "67E09C64-3558-48B7-9A27-A9499D0826E8");
             RockMigrationHelper.AddDefinedTypeAttribute("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "A75DFC58-7A1B-4799-BF31-451B2BBE38FF", "Keyword Expression", "KeywordExpression", "", 2, "", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F");
             RockMigrationHelper.AddDefinedTypeAttribute("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "F4399CEF-827B-48B2-A735-F7806FCFE8E8", "AttendanceGroup", "AttendanceGroup", "The attendance group", 102, "7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e", "17B0E99E-2D10-442A-9342-1F9F07996C2B");
-
-            RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF - Text Attendance Option (3) - Join a Homegroup", "C9C34BD5-D286-4002-AC28-474C2D6DFAED", false);
+            RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF - Text Attendance Option (3) - Join a Homegroup", "3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", false);
             RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF: Text Attendance Option (2) - Prayer Request", "2294DC3F-8539-4442-B30E-36D647C70261", false);
             RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF: Text Attendance Option (4) - Review Contact Info", "FE137A19-ECCE-44B5-9643-00C056CF2A72", false);
             RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF: Text Attendance Option (5) - Remove Last Attendance", "F3AE9577-2121-4971-BBED-CEBAB6AAF624", false);
+            RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF: Text Attendance Prayer Request Final", "63BE76F0-73E8-4709-8606-D26A5C060DCF", false);
             RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "PF: Text in Attendance Option (1) - Check in Household", "BA83A4C4-1684-4755-BEEF-CE21E89A761B", false);
             RockMigrationHelper.AddDefinedValue("2CACB86F-D811-4483-98E1-272F1FF8FF5D", "+12082976885", "Post Falls WS - lifer####", "B4016741-F6B0-4E53-B0FB-BE05A8272F74", false);
-
-            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"88978527-0ca4-4c52-8fda-cf915fafa472");
-            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"2.*");
-            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"");
+            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"8722ac70-d178-4306-bf91-eb2fbb11dfa2");
+            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^2$");
+            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF Message From: {{ FromPerson.FullName}}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
             RockMigrationHelper.AddDefinedValueAttributeValue("2294DC3F-8539-4442-B30E-36D647C70261", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|MessageBody^{{MessageBody}}|");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"ca876138-0461-40ad-ab4f-67678b8baeca");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^3.*");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF: Message for Joining a homegroup from {{ FromPerson.FullName}}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
+            RockMigrationHelper.AddDefinedValueAttributeValue("3F2C3A7B-FCBC-45DD-AA80-16BFAE4C6FE5", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ ReceivedDateTime }}|Campus^Post Falls Campus|");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"88978527-0ca4-4c52-8fda-cf915fafa472");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^2.+");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF: Prayer Request from {{ FromPerson.FullName }}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
+            RockMigrationHelper.AddDefinedValueAttributeValue("63BE76F0-73E8-4709-8606-D26A5C060DCF", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|MessageBody^{{MessageBody}}|");
             RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"d8354ea7-7da9-449d-94ee-210c6b9496d8");
             RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
             RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"(?i)lifer[0-9]...");
             RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF Message from: {{ FromPerson.FullName }}");
             RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
-            RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{ FromPhone }}|ReceivedDate^{{ ReceivedDate }}|ReceivedTime^{{ ReceivedTime }}|MessageBody^{{ MessageBody }}|");
+            RockMigrationHelper.AddDefinedValueAttributeValue("B4016741-F6B0-4E53-B0FB-BE05A8272F74", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{ FromPhone }}|ReceivedDateTime^{{ ReceivedDateTime}}|MessageBody^{{ MessageBody }}|ReceivedDate^{{ReceivedDate}}|ReceivedTime^{{ReceivedTime}}|Campus^Post Falls Campus|AttendanceGroup^Post Falls Weekend Worship Service|");
             RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"c5fe671a-c3ca-4785-95dd-3cb10f4308b0");
-            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"1.*");
-            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"");
-            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPerson^{{FromPerson}}|FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|");
-            RockMigrationHelper.AddDefinedValueAttributeValue("C9C34BD5-D286-4002-AC28-474C2D6DFAED", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"ca876138-0461-40ad-ab4f-67678b8baeca");
-            RockMigrationHelper.AddDefinedValueAttributeValue("C9C34BD5-D286-4002-AC28-474C2D6DFAED", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"3.*");
-            RockMigrationHelper.AddDefinedValueAttributeValue("C9C34BD5-D286-4002-AC28-474C2D6DFAED", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"");
-            RockMigrationHelper.AddDefinedValueAttributeValue("C9C34BD5-D286-4002-AC28-474C2D6DFAED", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|MessageBody^{{MessageBody}}|");
+            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^1.*");
+            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF Message From: {{ FromPerson.FullName}}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
+            RockMigrationHelper.AddDefinedValueAttributeValue("BA83A4C4-1684-4755-BEEF-CE21E89A761B", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|Campus^Post Falls Campus|AttendanceGroup^Post Falls Weekend Worship Service|");
             RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"a74396b8-4723-4be7-9f4a-14506c921fc8");
-            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"5.*");
-            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"");
+            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^5.*");
+            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF Message From: {{ FromPerson.FullName}}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
             RockMigrationHelper.AddDefinedValueAttributeValue("F3AE9577-2121-4971-BBED-CEBAB6AAF624", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|MessageBody^{{MessageBody}}|");
             RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"feb34437-9600-4330-855f-85404ec10018");
-            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"4.*");
-            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"");
+            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "17B0E99E-2D10-442A-9342-1F9F07996C2B", @"7105fcd2-3b66-4b6c-9ab6-4ce5fd572a1e");
+            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^4.*");
+            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "67E09C64-3558-48B7-9A27-A9499D0826E8", @"PF Message From: {{ FromPerson.FullName}}");
+            RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "79E3B97B-A717-45AB-A279-335FCDEA141A", @"76882ae3-1ce8-42a6-a2b6-8c0b29cf8cf8");
             RockMigrationHelper.AddDefinedValueAttributeValue("FE137A19-ECCE-44B5-9643-00C056CF2A72", "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ReceivedDateTime}}|MessageBody^{{MessageBody}}|");
         }
     }
