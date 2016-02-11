@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(12, "1.2.0")]
     class _010_GenerateTHIRSTCodeWorkflow : Migration
-    {
+    {        
         public override void Down()
         {
             

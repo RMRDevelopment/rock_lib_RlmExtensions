@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
+    [MigrationNumber(13, "1.2.0")]
     class _011_GenerateRECOVERYCodeWorkflow : Migration
     {
         public override void Down()
