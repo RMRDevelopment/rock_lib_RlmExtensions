@@ -82,7 +82,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddActionTypeAttributeValue("7FE2D8F1-7725-4EA0-B1BE-E901B1B4A066", "44A0B977-4730-4519-8FF6-B0A01A95B212", @"ead074c8-8913-4e27-8b05-ad1b57d9e448"); // Text Prayer Request - Initial:Submit Prayer Request:Send Submit Your Prayer Request:Attribute
             RockMigrationHelper.AddActionTypeAttributeValue("7FE2D8F1-7725-4EA0-B1BE-E901B1B4A066", "57093B41-50ED-48E5-B72B-8829E62704C8", @""); // Text Prayer Request - Initial:Submit Prayer Request:Send Submit Your Prayer Request:Order
             RockMigrationHelper.AddActionTypeAttributeValue("7FE2D8F1-7725-4EA0-B1BE-E901B1B4A066", "E5272B11-A2B8-49DC-860D-8D574E2BC15C", @"Respond with 2 and your prayer request."); // Text Prayer Request - Initial:Submit Prayer Request:Send Submit Your Prayer Request:Text Value|Attribute Value
-            
+
             RockMigrationHelper.UpdateEntityType("Rock.Model.Workflow", "3540E9A7-FE30-43A9-8B0A-A372B63DFC93", true, true);
             RockMigrationHelper.UpdateEntityType("Rock.Model.WorkflowActivity", "2CB52ED0-CB06-4D62-9E2C-73B60AFA4C9F", true, true);
             RockMigrationHelper.UpdateEntityType("Rock.Model.WorkflowActionType", "23E3273A-B137-48A3-9AFF-C8DC832DDCA6", true, true);
@@ -158,6 +158,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddActionTypeAttributeValue("00ABF4A1-3E66-48B7-8CAF-4F42BF69F1F1", "44A0B977-4730-4519-8FF6-B0A01A95B212", @"5fe24e05-7262-4f01-8ef0-33b192a7f6ac"); // Text Prayer Request:Submit Prayer Request:Send Thank You SMS:Attribute
             RockMigrationHelper.AddActionTypeAttributeValue("00ABF4A1-3E66-48B7-8CAF-4F42BF69F1F1", "57093B41-50ED-48E5-B72B-8829E62704C8", @""); // Text Prayer Request:Submit Prayer Request:Send Thank You SMS:Order
             RockMigrationHelper.AddActionTypeAttributeValue("00ABF4A1-3E66-48B7-8CAF-4F42BF69F1F1", "E5272B11-A2B8-49DC-860D-8D574E2BC15C", @"Thank you for your prayer request"); // Text Prayer Request:Submit Prayer Request:Send Thank You SMS:Text Value|Attribute Value
+
         }
     }
 }

@@ -88,6 +88,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddActionTypeAttributeValue("8341ED44-451B-4BA8-BAAC-85FC64E779E4", "44A0B977-4730-4519-8FF6-B0A01A95B212", @"fdfd5160-c2c0-4da1-8131-fe7be65c677b"); // Text Remove Attendance Record:Remove From Current Attendance:Send SMS Message:Attribute
             RockMigrationHelper.AddActionTypeAttributeValue("8341ED44-451B-4BA8-BAAC-85FC64E779E4", "57093B41-50ED-48E5-B72B-8829E62704C8", @""); // Text Remove Attendance Record:Remove From Current Attendance:Send SMS Message:Order
             RockMigrationHelper.AddActionTypeAttributeValue("8341ED44-451B-4BA8-BAAC-85FC64E779E4", "E5272B11-A2B8-49DC-860D-8D574E2BC15C", @"Thank you. Please remember to fill out a connection card."); // Text Remove Attendance Record:Remove From Current Attendance:Send SMS Message:Text Value|Attribute Value
+
         }
     }
 }

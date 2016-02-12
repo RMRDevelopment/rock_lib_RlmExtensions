@@ -112,6 +112,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddActionTypeAttributeValue("A125C5FC-583C-4EA1-812A-13C174515971", "44A0B977-4730-4519-8FF6-B0A01A95B212", @"ca158792-f553-4f0f-81ca-d136068c6829"); // Text Review Contact Info:Send Contact Info:Send SMS Contact Info:Attribute
             RockMigrationHelper.AddActionTypeAttributeValue("A125C5FC-583C-4EA1-812A-13C174515971", "57093B41-50ED-48E5-B72B-8829E62704C8", @""); // Text Review Contact Info:Send Contact Info:Send SMS Contact Info:Order
             RockMigrationHelper.AddActionTypeAttributeValue("A125C5FC-583C-4EA1-812A-13C174515971", "E5272B11-A2B8-49DC-860D-8D574E2BC15C", @"Contact info on file: First name - {{Workflow.FromPersonFirstName }}, Last name - {{Workflow.FromPersonLastName}}, Home Phone - {{Workflow.FromPersonPhone}}, Mobile Phone - {{Workflow.FromPersonMobilePhone}}. If the info is incorrect, please reply with 5 and fill out a connection card."); // Text Review Contact Info:Send Contact Info:Send SMS Contact Info:Text Value|Attribute Value
+
         }
     }
 }
