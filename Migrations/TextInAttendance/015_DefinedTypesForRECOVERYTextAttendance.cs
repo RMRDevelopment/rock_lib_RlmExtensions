@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.reallifeministries.RockExtensions.Migrations
 {
-    [MigrationNumber(16, "1.2.0")]
+    [MigrationNumber(17, "1.2.0")]
     class _015_DefinedTypesForRECOVERYAttendance : Migration
     {
         Guid guidRECOVERY = Guid.NewGuid();        
