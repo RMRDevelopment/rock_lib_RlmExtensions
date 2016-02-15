@@ -19,10 +19,10 @@ namespace com.reallifeministries.RockExtensions.Migrations
         public override void Up()
         {
             string catSMSGuid = Guid.NewGuid().ToString();
-            RockMigrationHelper.UpdateCategory("C9F3C4A5-1526-474D-803F-D6C7A45CBBAE", "SMS Workflows", "fa fa-gear", null, catSMSGuid);
+            RockMigrationHelper.UpdateCategory("C9F3C4A5-1526-474D-803F-D6C7A45CBBAE", "SMS Workflows", "fa fa-gear", string.Empty, catSMSGuid);
 
             string catAttGuid = Guid.NewGuid().ToString();
-            RockMigrationHelper.UpdateCategory("C9F3C4A5-1526-474D-803F-D6C7A45CBBAE", "Attendance Generation", "fa fa-group", null, catAttGuid);
+            RockMigrationHelper.UpdateCategory("C9F3C4A5-1526-474D-803F-D6C7A45CBBAE", "Attendance Generation", "fa fa-group", string.Empty, catAttGuid);
         }
     }
 }
