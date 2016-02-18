@@ -22,6 +22,8 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     [ExportMetadata("ComponentName", "Validate attendance Code")]
     [WorkflowAttribute("PersonAttribute", "The workflow attribute containing the person.", true, "", "", 0, null,
         new string[] { "Rock.Field.Types.PersonFieldType" })]
+    [WorkflowAttribute("Category", "The prayer request category to set", false, "", "", 0, null,
+        new string[] { "Rock.Field.Types.CategoryFieldType" })]
     [TextField("PrayerRequest", "The Prayer Request to be Saved", true)]
     class AddPrayerRequestToPerson : ActionComponent
     {
@@ -44,9 +46,12 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                         if (personAlias != null)
                         {
                             var prayerRequest = GetAttributeValue(action, "PrayerRequest").ResolveMergeFields(GetMergeFields(action));
+                            var prayerRequestCategoryAttr = GetAttributeValue(action, "Category").ResolveMergeFields(GetMergeFields(action));
+                            var categoryInst = action.GetWorklowAttributeValue(prayerRequestCategoryAttr.AsGuid());
+                            var category = (new CategoryService(rockContext)).Get(categoryInst.AsGuid());
                             if (prayerRequest != null)
                             {
-                                submitPrayer(personAlias, prayerRequest, rockContext);
+                                submitPrayer(personAlias, prayerRequest, category, rockContext);
                             }
                             else
                             {
@@ -72,7 +77,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             return true;
         }
 
-        private void submitPrayer(PersonAlias personAlias, string prayerRequest, RockContext rockContext)
+        private void submitPrayer(PersonAlias personAlias, string prayerRequest, Category category, RockContext rockContext)
         {
             var prayerService = new PrayerRequestService(rockContext);
             // Parse out 
@@ -89,7 +94,8 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 IsActive = true,
                 AllowComments = true,
                 FirstName = personAlias.Person.FirstName,
-                LastName = personAlias.Person.LastName
+                LastName = personAlias.Person.LastName,
+                Category = category
             });
             rockContext.SaveChanges();
         }
