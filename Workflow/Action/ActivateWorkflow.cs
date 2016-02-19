@@ -12,6 +12,7 @@ using Rock.Data;
 using Rock.Model;
 using Rock.Web.Cache;
 using Rock.Workflow;
+using Rock.Workflow.Action;
 
 namespace com.reallifeministries.RockExtensions.Workflow.Action
 {
@@ -54,7 +55,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                 return false;
             }
             
-            var newWorkflow = Rock.Model.Workflow.Activate( newWorkflowType, newWorkflowName );
+            var newWorkflow = Rock.Model.Workflow.Activate( newWorkflowType, newWorkflowName );            
             if (newWorkflow == null)
             {
                 action.AddLogEntry( "The Workflow could not be activated", true );
@@ -62,8 +63,13 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             }
 
             CopyAttributes( newWorkflow, currentActivity, rockContext );
-
-            SaveForProcessingLater( newWorkflow, rockContext );
+            // Set Initiator in workflow as current person
+            newWorkflow.InitiatorPersonAlias = action.Activity.Workflow.InitiatorPersonAlias;
+            newWorkflow.InitiatorPersonAliasId = action.Activity.Workflow.InitiatorPersonAliasId;
+            newWorkflow.CreatedByPersonAlias = action.Activity.Workflow.CreatedByPersonAlias;
+            newWorkflow.CreatedByPersonAliasId = action.Activity.Workflow.CreatedByPersonAliasId;
+            
+            SaveForProcessingLater(newWorkflow, rockContext);
 
             return true;
             // Kick off processing of new Workflow
@@ -105,6 +111,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             {
                 rockContext.SaveChanges();
                 newWorkflow.SaveAttributeValues( rockContext );
+                
                 foreach (var activity in newWorkflow.Activities)
                 {
                     activity.SaveAttributeValues( rockContext );
