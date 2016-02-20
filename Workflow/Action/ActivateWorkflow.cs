@@ -70,33 +70,17 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             newWorkflow.CreatedByPersonAliasId = action.Activity.Workflow.CreatedByPersonAliasId;
             
             SaveForProcessingLater(newWorkflow, rockContext);
-
-            return true;
-            // Kick off processing of new Workflow
-            /*if(newWorkflow.Process( rockContext, entity, out errorMessages )) 
+            // Process new workflow
+            try
             {
-                if (newWorkflow.IsPersisted || newWorkflowType.IsPersisted)
-                {
-                    var workflowService = new Rock.Model.WorkflowService( rockContext );
-                    workflowService.Add( newWorkflow );
-
-                    rockContext.WrapTransaction( () =>
-                    {
-                        rockContext.SaveChanges();
-                        newWorkflow.SaveAttributeValues( rockContext );
-                        foreach (var activity in newWorkflow.Activities)
-                        {
-                            activity.SaveAttributeValues( rockContext );
-                        }
-                    } );
-                }
-
-                return true;
+                new WorkflowService(rockContext).Process(newWorkflow, out errorMessages);
             }
-            else
+            catch(Exception e)
             {
-                return false;
-            }*/
+                action.AddLogEntry(string.Format("The Workflow couldn't be processed: {0}", e.Message));
+            }
+
+            return true;            
         }
         private void SaveForProcessingLater(Rock.Model.Workflow newWorkflow, RockContext rockContext)
         {
