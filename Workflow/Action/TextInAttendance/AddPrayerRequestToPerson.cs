@@ -81,7 +81,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
         {
             var prayerService = new PrayerRequestService(rockContext);
             // Parse out 
-            if (prayerRequest.StartsWith("3")){
+            if (prayerRequest.StartsWith("2")){
                 prayerRequest = prayerRequest.Substring(1, prayerRequest.Length - 1);
             }
             prayerService.Add(new PrayerRequest
