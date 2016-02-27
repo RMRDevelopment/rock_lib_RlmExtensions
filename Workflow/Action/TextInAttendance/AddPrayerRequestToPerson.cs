@@ -24,7 +24,8 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
         new string[] { "Rock.Field.Types.PersonFieldType" })]
     [WorkflowAttribute("Category", "The prayer request category to set", false, "", "", 0, null,
         new string[] { "Rock.Field.Types.CategoryFieldType" })]
-    [TextField("PrayerRequest", "The Prayer Request to be Saved", true)]
+    [WorkflowAttribute("PrayerRequest", "The Prayer Request to be Saved", true, "", "", 0, null,
+        new string[] { "Rock.Field.Types.TextFieldType" })]    
     class AddPrayerRequestToPerson : ActionComponent
     {
         public override bool Execute(RockContext rockContext, WorkflowAction action, object entity, out List<string> errorMessages)
@@ -45,13 +46,14 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
                         var personAlias = (new PersonAliasService(rockContext)).Get(personAliasGuid);
                         if (personAlias != null)
                         {
-                            var prayerRequest = GetAttributeValue(action, "PrayerRequest").ResolveMergeFields(GetMergeFields(action));
+                            var prayerRequestAttr = GetAttributeValue(action, "PrayerRequest").ResolveMergeFields(GetMergeFields(action));
+                            var prayerRequestValue = action.GetWorklowAttributeValue(prayerRequestAttr.AsGuid());
                             var prayerRequestCategoryAttr = GetAttributeValue(action, "Category").ResolveMergeFields(GetMergeFields(action));
                             var categoryInst = action.GetWorklowAttributeValue(prayerRequestCategoryAttr.AsGuid());
                             var category = (new CategoryService(rockContext)).Get(categoryInst.AsGuid());
-                            if (prayerRequest != null)
+                            if (prayerRequestValue != null)
                             {
-                                submitPrayer(personAlias, prayerRequest, category, rockContext);
+                                submitPrayer(personAlias, prayerRequestValue, category, rockContext);
                             }
                             else
                             {
