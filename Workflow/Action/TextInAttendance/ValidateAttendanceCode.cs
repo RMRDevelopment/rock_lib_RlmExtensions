@@ -75,7 +75,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             attendancecode = RemoveWhitespace(attendancecode.ToLower());
             // check to see if the generatedcode matches
             if (!string.IsNullOrEmpty(attendancecode) || (attendanceDateString != null && !dateValidated)) {
-                var match = AttendanceCodes.Where(v => v.Value == attendancecode).FirstOrDefault();
+                var match = AttendanceCodes.Where(v => attendancecode.Contains(v.Value)).FirstOrDefault();
                 if (match.Value != null)
                 {                    
                     action.Activity.Workflow.SetAttributeValue("AttendanceKey", match.Key.ToString());
@@ -90,7 +90,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             return true;            
         }
         public string RemoveWhitespace(string input)
-        {
+        {            
             return new string(input.ToCharArray()
                 .Where(c => !Char.IsWhiteSpace(c))
                 .ToArray());
