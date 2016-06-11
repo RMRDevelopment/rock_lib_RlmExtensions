@@ -24,7 +24,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     [ExportMetadata( "ComponentName", "Activate Workflow" )]
 
     [WorkflowTypeField( "Workflow", "The workflow type to activate", false,true,"","",0)]
-    [TextField("WorkflowName", "What to name this Workflow Instance",true)]
+    [TextField("WorkflowName", "What to name this Workflow Instance  <span class='tip tip-lava'></span>", true)]
     public class ActivateWorkflow : ActionComponent
     {
         /// <summary>
@@ -48,6 +48,10 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             var currentActivity = action.Activity;
             var newWorkflowType = new WorkflowTypeService( rockContext ).Get( guid );
             var newWorkflowName = GetAttributeValue(action, "WorkflowName" );
+
+            var mergeFields = GetMergeFields(action);
+
+            newWorkflowName = newWorkflowName.ResolveMergeFields(mergeFields);
 
             if (newWorkflowType == null)
             {
