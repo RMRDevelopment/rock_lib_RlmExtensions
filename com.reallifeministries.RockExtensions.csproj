@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\Group\ScheduleSelect.cs" />
     <Compile Include="Search\Person\BirthDate.cs" />
+    <Compile Include="Workflow\Action\AddPersonAndSpouseFromFields.cs" />
     <Compile Include="Workflow\Action\GetPersonFromFields.cs" />
     <Compile Include="Workflow\Action\TextInAttendance\PostAttendanceToGroup.cs" />
     <Compile Include="Workflow\Action\TextInAttendance\RemoveLastAttendanceFromPerson.cs" />
