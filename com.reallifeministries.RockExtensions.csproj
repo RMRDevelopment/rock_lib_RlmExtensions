@@ -76,6 +76,7 @@
     <Compile Include="Migrations\TextInAttendance\001_StartWorkflowsForTextAttendance.cs" />
     <Compile Include="Migrations\002_AddBirthdaySearchRoute.cs" />
     <Compile Include="Migrations\TextInAttendance\012_AddGeneratedAttendanceCodePage.cs" />
+    <Compile Include="PersonProfile\Badges\GroupAttendance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\Group\ScheduleSelect.cs" />
     <Compile Include="Search\Person\BirthDate.cs" />
