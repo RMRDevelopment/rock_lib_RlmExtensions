@@ -19,7 +19,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
     /// </summary>
     [Description("Adds a new Prayer Request to the given Person")]
     [Export(typeof(ActionComponent))]
-    [ExportMetadata("ComponentName", "Validate attendance Code")]
+    [ExportMetadata("ComponentName", "Add Prayer Request")]
     [WorkflowAttribute("PersonAttribute", "The workflow attribute containing the person.", true, "", "", 0, null,
         new string[] { "Rock.Field.Types.PersonFieldType" })]
     [WorkflowAttribute("Category", "The prayer request category to set", false, "", "", 0, null,
