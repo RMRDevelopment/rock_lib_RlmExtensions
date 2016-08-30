@@ -39,20 +39,6 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
         }
 
         /// <summary>
-        /// Gets the section that this will appear in in the Field Selector
-        /// </summary>
-        /// <value>
-        /// The section.
-        /// </value>
-        public override string Section
-        {
-            get
-            {
-                return base.Section;
-            }
-        }
-
-        /// <summary>
         /// The PropertyName of the property in the anonymous class returned by the SelectExpression
         /// </summary>
         /// <value>
@@ -117,21 +103,10 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
         /// <returns></returns>
         public override Expression GetExpression( RockContext context, MemberExpression entityIdProperty, string selection )
         {            
-            var groupScheduleQry = new GroupService(context).Queryable().Select(p => p.Schedule); ;
+            var groupScheduleQry = new GroupService(context).Queryable().Select(p => p.Schedule.Name);
 
             return SelectExpressionExtractor.Extract(groupScheduleQry, entityIdProperty, "p");
         }        
-
-        /// <summary>
-        /// Renders the controls.
-        /// </summary>
-        /// <param name="parentControl">The parent control.</param>
-        /// <param name="writer">The writer.</param>
-        /// <param name="controls">The controls.</param>
-        public override void RenderControls( System.Web.UI.Control parentControl, System.Web.UI.HtmlTextWriter writer, System.Web.UI.Control[] controls )
-        {
-            base.RenderControls( parentControl, writer, controls );
-        }
         
         #endregion
     }
