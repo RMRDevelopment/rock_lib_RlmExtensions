@@ -72,7 +72,7 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
         /// </value>
         public override Type ColumnFieldType
         {
-            get { return typeof( Rock.Model.Schedule ); }
+            get { return typeof(string); }
         }
 
         /// <summary>
