@@ -72,7 +72,7 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
         /// </value>
         public override Type ColumnFieldType
         {
-            get { return typeof(string); }
+            get { return typeof(Schedule); }
         }
 
         /// <summary>
@@ -106,6 +106,11 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
             return "Schedule";
         }
 
+        public override string SortProperties(string selection)
+        {
+            return "Schedule.Name";
+        }
+
         /// <summary>
         /// Gets the expression.
         /// </summary>
@@ -115,7 +120,7 @@ namespace com.reallifeministries.RockExtensions.Reporting.Group
         /// <returns></returns>
         public override Expression GetExpression( RockContext context, MemberExpression entityIdProperty, string selection )
         {            
-            var groupScheduleQry = new GroupService(context).Queryable().Select(p => p.Schedule.Name);
+            var groupScheduleQry = new GroupService(context).Queryable().Select(p => p.Schedule);
 
             return SelectExpressionExtractor.Extract(groupScheduleQry, entityIdProperty, "p");
         }        
