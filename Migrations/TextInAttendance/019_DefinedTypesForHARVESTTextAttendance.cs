@@ -45,7 +45,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddDefinedValueAttributeValue(guidHARVEST.ToString(), "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"(?i)harvest[0-9]...");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidHARVEST.ToString(), "67E09C64-3558-48B7-9A27-A9499D0826E8", @"HARVEST Message from: {{ FromPerson.FullName }}");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidHARVEST.ToString(), "79E3B97B-A717-45AB-A279-335FCDEA141A", rlmHARVESTCampusGuid);
-            RockMigrationHelper.AddDefinedValueAttributeValue(guidHARVEST.ToString(), "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{ FromPhone }}|ReceivedDateTime^{{ ReceivedDateTime}}|MessageBody^{{ MessageBody }}|ReceivedDate^{{ReceivedDate}}|ReceivedTime^{{ReceivedTime}}|Campus^Coeur d'Alene Campus|AttendanceGroup^RLM HARVEST Weekend Worship|");
+            RockMigrationHelper.AddDefinedValueAttributeValue(guidHARVEST.ToString(), "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{ FromPhone }}|ReceivedDateTime^{{ ReceivedDateTime}}|MessageBody^{{ MessageBody }}|ReceivedDate^{{ReceivedDate}}|ReceivedTime^{{ReceivedTime}}|Campus^Post Falls Campus|AttendanceGroup^Harvest Fest 2016|");
             
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption2.ToString(), "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"8722ac70-d178-4306-bf91-eb2fbb11dfa2");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption2.ToString(), "17B0E99E-2D10-442A-9342-1F9F07996C2B", rlmHARVESTAttendanceGroupGuid);
@@ -66,7 +66,7 @@ namespace com.reallifeministries.RockExtensions.Migrations
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption3.ToString(), "3A526D6C-06FC-46CD-A447-9A6D9A74BB4F", @"^3.*");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption3.ToString(), "67E09C64-3558-48B7-9A27-A9499D0826E8", @"HARVEST: Message for Joining a homegroup from {{ FromPerson.FullName}}");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption3.ToString(), "79E3B97B-A717-45AB-A279-335FCDEA141A", rlmHARVESTCampusGuid);
-            RockMigrationHelper.AddDefinedValueAttributeValue(guidOption3.ToString(), "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ ReceivedDateTime }}|Campus^Coeur d'Alene Campus|");
+            RockMigrationHelper.AddDefinedValueAttributeValue(guidOption3.ToString(), "836CFC0B-6750-4A93-8309-EAB868B845AF", @"FromPhone^{{FromPhone}}|ReceivedDateTime^{{ ReceivedDateTime }}|Campus^Post Falls Campus|");
 
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption4.ToString(), "0097D00F-1F29-4217-8E67-D37A619A6FA3", @"feb34437-9600-4330-855f-85404ec10018");
             RockMigrationHelper.AddDefinedValueAttributeValue(guidOption4.ToString(), "17B0E99E-2D10-442A-9342-1F9F07996C2B", rlmHARVESTAttendanceGroupGuid);
