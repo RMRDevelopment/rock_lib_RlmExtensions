@@ -11,7 +11,8 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
         PF,
         CDA,
         THIRST,
-        RECOVERY
+        RECOVERY,
+        HARVEST
     }
    
 }

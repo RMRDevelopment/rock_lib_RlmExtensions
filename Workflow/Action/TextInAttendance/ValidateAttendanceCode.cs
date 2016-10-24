@@ -41,6 +41,7 @@ namespace com.reallifeministries.RockExtensions.Workflow.Action
             AttendanceCodes.Add(RLMServiceTypes.CDA, globalAttributes.GetValue("CDAAttendanceCode"));
             AttendanceCodes.Add(RLMServiceTypes.THIRST, globalAttributes.GetValue("THIRSTAttendanceCode"));
             AttendanceCodes.Add(RLMServiceTypes.RECOVERY, globalAttributes.GetValue("RECOVERYAttendanceCode"));
+            AttendanceCodes.Add(RLMServiceTypes.HARVEST, globalAttributes.GetValue("HARVESTAttendanceCode"));
 
             var userInputtedCode = GetAttributeValue(action, "UserInputCode").ResolveMergeFields(GetMergeFields(action));            
             var parsedSplit = userInputtedCode.Split('|');
